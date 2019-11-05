@@ -12,16 +12,84 @@ namespace Assign_Week_9
 {
     public partial class Form1 : Form
     {
+        List<string> team = new List<string>() { "Matthew", "Tom", "John", "Jane", "Kate", "Michael" };
+        List<double> balance = new List<double>() { 0, 0, 0, 0, 0, 0 };
+
+        void lboxRefill()
+        {
+            int teamLength = team.Count();
+            lboxNames.Items.Clear();
+            lboxBalance.Items.Clear();
+
+            for (int i = 0; i < teamLength; i++)
+            {
+                lboxNames.Items.Add(team[i]);
+                lboxBalance.Items.Add(balance[i]);
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void BtnAddName_Click(object sender, EventArgs e)
+        private void btnAddTeam_Click(object sender, EventArgs e)
         {
-            
+            lboxRefill();
+        }
 
-            if(lboxNames.SelectedItem != null)
+        private void btnRemoveSelected_Click(object sender, EventArgs e)
+        {
+            int currentIndex = lboxNames.SelectedIndex;
+
+            if (currentIndex >= 0)
+            {
+                team.RemoveAt(currentIndex);
+                lboxRefill();
+            }
+            else
+            {
+                MessageBox.Show("You need to select somebody");
+            }
+        }
+
+        private void btnAddMember_Click(object sender, EventArgs e)
+        {
+            string member = tboxMember.Text;
+
+            if (member != "")
+            {
+                team.Add(member);
+                balance.Add(0);
+
+                lboxRefill();
+            }
+            else
+            {
+                MessageBox.Show("You must enter the name");
+            }
+        }
+
+        private void btnRemoveName_Click(object sender, EventArgs e)
+        {
+            string member = tboxMember.Text;
+
+            if (member != "")
+            {
+                team.Remove(member);
+                balance.RemoveAt(0);
+                lboxRefill();
+            }
+            else
+            {
+                MessageBox.Show("You must enter the name");
+            }
+
+        }
+
+        private void btnAddName_Click(object sender, EventArgs e)
+        {
+            if (lboxNames.SelectedItem != null)
             {
                 string name = lboxNames.SelectedItem.ToString();
 
@@ -35,10 +103,9 @@ namespace Assign_Week_9
             {
                 MessageBox.Show("Please select a name!");
             }
-            
         }
 
-        private void BtnRemoveName_Click(object sender, EventArgs e)
+        private void btnRemoveName_Click_1(object sender, EventArgs e)
         {
             if (lbRoundNames.SelectedItem != null)
                 lbRoundNames.Items.Remove(lbRoundNames.SelectedItem);
@@ -50,12 +117,12 @@ namespace Assign_Week_9
                 MessageBox.Show("Select an item.");
         }
 
-        private void BtnBuyRound_Click(object sender, EventArgs e)
+        private void btnBuyRound_Click(object sender, EventArgs e)
         {
-            if(lbRoundNames.Items.Count != 0)
+            if (lbRoundNames.Items.Count != 0)
             {
 
-                if(txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
+                if (txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
                 {
                     string roundBuyer = lbRoundNames.SelectedItem.ToString();
                     double roundPrice = Convert.ToDouble(txtRndPrice.Text);
@@ -78,6 +145,8 @@ namespace Assign_Week_9
                             }
                         }
                     }
+
+                    lbRoundNames.Items.Clear();
                 }
 
                 else
@@ -89,7 +158,21 @@ namespace Assign_Week_9
             else
             {
                 MessageBox.Show("There are no people to select.");
-            }     
+            }
+        }
+
+        private void GameButton_Tick(object sender, EventArgs e)
+        {
+            if(lbRoundNames.Items.Count != 0)
+            {
+                btnRemoveSelected.Enabled = false;
+                btnRemoveMember.Enabled = false;
+            }
+            else
+            {
+                btnRemoveSelected.Enabled = true;
+                btnRemoveMember.Enabled = true;
+            }
         }
     }
 }
