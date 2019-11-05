@@ -12,10 +12,12 @@ namespace Assign_Week_9
 {
     public partial class Form1 : Form
     {
+        //Lists containing team members and their balance
         List<string> team = new List<string>() { "Matthew", "Tom", "John", "Jane", "Kate", "Michael" };
         List<double> balance = new List<double>() { 0, 0, 0, 0, 0, 0 };
 
-        void lboxRefill()
+
+        void lboxRefill() //The method fills both listboxes with team members and their balance
         {
             int teamLength = team.Count();
             lboxNames.Items.Clear();
@@ -38,14 +40,22 @@ namespace Assign_Week_9
             lboxRefill();
         }
 
-        private void btnRemoveSelected_Click(object sender, EventArgs e)
+
+        private void btnRemoveSelected_Click(object sender, EventArgs e) //Removing selected member of the team from names and round listboxes
         {
             int currentIndex = lboxNames.SelectedIndex;
+            string person = team[currentIndex]; 
 
-            if (currentIndex >= 0)
+            if (lboxNames.SelectedItem != null) 
             {
+                //Removing items from lists
                 team.RemoveAt(currentIndex);
-                lboxRefill();
+                balance.RemoveAt(currentIndex);
+
+                //Removing items from listboxes
+                lboxNames.Items.Remove(lboxNames.SelectedItem);
+                lboxBalance.Items.RemoveAt(currentIndex);
+                lbRoundNames.Items.Remove(person.Trim()); //Using string person to access the round listbox
             }
             else
             {
@@ -53,16 +63,19 @@ namespace Assign_Week_9
             }
         }
 
-        private void btnAddMember_Click(object sender, EventArgs e)
+        private void btnAddMember_Click(object sender, EventArgs e) //Adding new member to the team
         {
             string member = tboxMember.Text;
 
             if (member != "")
             {
+                //New items in both lists
                 team.Add(member);
                 balance.Add(0);
 
-                lboxRefill();
+                //New items in both listboxes
+                lboxNames.Items.Add(member);
+                lboxBalance.Items.Add(0);
             }
             else
             {
@@ -70,21 +83,28 @@ namespace Assign_Week_9
             }
         }
 
-        private void btnRemoveName_Click(object sender, EventArgs e)
+        private void btnRemoveName_Click(object sender, EventArgs e) //Removing member by name
         {
             string member = tboxMember.Text;
 
-            if (member != "")
+            if (member != "" && lboxNames.Items.Contains(member) == true)
             {
+                //Removing items from both lists
                 team.Remove(member);
                 balance.RemoveAt(0);
-                lboxRefill();
+
+                //Removing items from both listboxes
+                lboxNames.Items.Remove(member);
+                lboxBalance.Items.RemoveAt(0);
             }
-            else
+            else if (member == "")
             {
                 MessageBox.Show("You must enter the name");
             }
-
+            else if (lboxNames.Items.Contains(member) == false)
+            {
+                MessageBox.Show("You can't remove ghosts");
+            }
         }
 
         private void btnAddName_Click(object sender, EventArgs e)
@@ -112,7 +132,6 @@ namespace Assign_Week_9
 
             else if (lbRoundNames.Items.Count == 0)
                 MessageBox.Show("There are no more items.");
-
             else
                 MessageBox.Show("Select an item.");
         }
@@ -121,7 +140,6 @@ namespace Assign_Week_9
         {
             if (lbRoundNames.Items.Count != 0)
             {
-
                 if (txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
                 {
                     string roundBuyer = lbRoundNames.SelectedItem.ToString();
