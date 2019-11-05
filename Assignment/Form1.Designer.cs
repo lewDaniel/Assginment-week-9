@@ -42,8 +42,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuyRound = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.txtRndPrice = new System.Windows.Forms.TextBox();
+            this.lbRoundNames = new System.Windows.Forms.ListBox();
             this.btnRemoveName = new System.Windows.Forms.Button();
             this.btnAddName = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -160,8 +160,8 @@
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btnBuyRound);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.listBox3);
+            this.groupBox2.Controls.Add(this.txtRndPrice);
+            this.groupBox2.Controls.Add(this.lbRoundNames);
             this.groupBox2.Controls.Add(this.btnRemoveName);
             this.groupBox2.Controls.Add(this.btnAddName);
             this.groupBox2.Location = new System.Drawing.Point(335, 26);
@@ -175,7 +175,7 @@
             // 
             this.pictureBox1.Image = global::Assign_Week_9.Properties.Resources.alcohol;
             this.pictureBox1.InitialImage = global::Assign_Week_9.Properties.Resources.alcohol;
-            this.pictureBox1.Location = new System.Drawing.Point(127, 327);
+            this.pictureBox1.Location = new System.Drawing.Point(127, 319);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(167, 79);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,7 +185,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 268);
+            this.label3.Location = new System.Drawing.Point(35, 257);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 17);
             this.label3.TabIndex = 17;
@@ -193,28 +193,29 @@
             // 
             // btnBuyRound
             // 
-            this.btnBuyRound.Location = new System.Drawing.Point(16, 327);
+            this.btnBuyRound.Location = new System.Drawing.Point(16, 319);
             this.btnBuyRound.Name = "btnBuyRound";
             this.btnBuyRound.Size = new System.Drawing.Size(105, 79);
             this.btnBuyRound.TabIndex = 1;
             this.btnBuyRound.Text = "Buy a Round";
             this.btnBuyRound.UseVisualStyleBackColor = true;
+            this.btnBuyRound.Click += new System.EventHandler(this.BtnBuyRound_Click);
             // 
-            // textBox2
+            // txtRndPrice
             // 
-            this.textBox2.Location = new System.Drawing.Point(127, 265);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 22);
-            this.textBox2.TabIndex = 13;
+            this.txtRndPrice.Location = new System.Drawing.Point(127, 254);
+            this.txtRndPrice.Name = "txtRndPrice";
+            this.txtRndPrice.Size = new System.Drawing.Size(167, 22);
+            this.txtRndPrice.TabIndex = 13;
             // 
-            // listBox3
+            // lbRoundNames
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 16;
-            this.listBox3.Location = new System.Drawing.Point(127, 32);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(167, 212);
-            this.listBox3.TabIndex = 11;
+            this.lbRoundNames.FormattingEnabled = true;
+            this.lbRoundNames.ItemHeight = 16;
+            this.lbRoundNames.Location = new System.Drawing.Point(127, 32);
+            this.lbRoundNames.Name = "lbRoundNames";
+            this.lbRoundNames.Size = new System.Drawing.Size(167, 212);
+            this.lbRoundNames.TabIndex = 11;
             // 
             // btnRemoveName
             // 
@@ -222,8 +223,9 @@
             this.btnRemoveName.Name = "btnRemoveName";
             this.btnRemoveName.Size = new System.Drawing.Size(105, 70);
             this.btnRemoveName.TabIndex = 2;
-            this.btnRemoveName.Text = ">>";
+            this.btnRemoveName.Text = "<<";
             this.btnRemoveName.UseVisualStyleBackColor = true;
+            this.btnRemoveName.Click += new System.EventHandler(this.BtnRemoveName_Click);
             // 
             // btnAddName
             // 
@@ -231,8 +233,9 @@
             this.btnAddName.Name = "btnAddName";
             this.btnAddName.Size = new System.Drawing.Size(105, 70);
             this.btnAddName.TabIndex = 7;
-            this.btnAddName.Text = "<<";
+            this.btnAddName.Text = ">>";
             this.btnAddName.UseVisualStyleBackColor = true;
+            this.btnAddName.Click += new System.EventHandler(this.BtnAddName_Click);
             // 
             // Form1
             // 
@@ -270,7 +273,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tboxMember;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRndPrice;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox lboxBalance;
     }
