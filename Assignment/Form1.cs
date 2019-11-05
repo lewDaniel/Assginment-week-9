@@ -12,7 +12,7 @@ namespace Assign_Week_9
 {
     public partial class Form1 : Form
     {
-        List<string> team = new List<string>() {"Matthew", "Tom", "John", "Jane", "Kate", "Michael"};
+        List<string> team = new List<string>() { "Matthew", "Tom", "John", "Jane", "Kate", "Michael" };
         List<double> balance = new List<double>() { 0, 0, 0, 0, 0, 0 };
 
         void lboxRefill()
@@ -63,7 +63,7 @@ namespace Assign_Week_9
                 balance.Add(0);
 
                 lboxRefill();
-            } 
+            }
             else
             {
                 MessageBox.Show("You must enter the name");
@@ -84,11 +84,12 @@ namespace Assign_Week_9
             {
                 MessageBox.Show("You must enter the name");
             }
-        private void BtnAddName_Click(object sender, EventArgs e)
-        {
-            
 
-            if(lboxNames.SelectedItem != null)
+        }
+
+        private void btnAddName_Click(object sender, EventArgs e)
+        {
+            if (lboxNames.SelectedItem != null)
             {
                 string name = lboxNames.SelectedItem.ToString();
 
@@ -102,10 +103,9 @@ namespace Assign_Week_9
             {
                 MessageBox.Show("Please select a name!");
             }
-            
         }
 
-        private void BtnRemoveName_Click(object sender, EventArgs e)
+        private void btnRemoveName_Click_1(object sender, EventArgs e)
         {
             if (lbRoundNames.SelectedItem != null)
                 lbRoundNames.Items.Remove(lbRoundNames.SelectedItem);
@@ -117,12 +117,12 @@ namespace Assign_Week_9
                 MessageBox.Show("Select an item.");
         }
 
-        private void BtnBuyRound_Click(object sender, EventArgs e)
+        private void btnBuyRound_Click(object sender, EventArgs e)
         {
-            if(lbRoundNames.Items.Count != 0)
+            if (lbRoundNames.Items.Count != 0)
             {
 
-                if(txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
+                if (txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
                 {
                     string roundBuyer = lbRoundNames.SelectedItem.ToString();
                     double roundPrice = Convert.ToDouble(txtRndPrice.Text);
@@ -156,7 +156,7 @@ namespace Assign_Week_9
             else
             {
                 MessageBox.Show("There are no people to select.");
-            }     
+            }
         }
     }
 }

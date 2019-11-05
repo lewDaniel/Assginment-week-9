@@ -43,9 +43,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuyRound = new System.Windows.Forms.Button();
             this.txtRndPrice = new System.Windows.Forms.TextBox();
-            this.lbRoundNames = new System.Windows.Forms.ListBox();
             this.btnRemoveName = new System.Windows.Forms.Button();
             this.btnAddName = new System.Windows.Forms.Button();
+            this.lbRoundNames = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -157,11 +157,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbRoundNames);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btnBuyRound);
             this.groupBox2.Controls.Add(this.txtRndPrice);
-            this.groupBox2.Controls.Add(this.lbRoundNames);
             this.groupBox2.Controls.Add(this.btnRemoveName);
             this.groupBox2.Controls.Add(this.btnAddName);
             this.groupBox2.Location = new System.Drawing.Point(335, 26);
@@ -199,7 +199,7 @@
             this.btnBuyRound.TabIndex = 1;
             this.btnBuyRound.Text = "Buy a Round";
             this.btnBuyRound.UseVisualStyleBackColor = true;
-            this.btnBuyRound.Click += new System.EventHandler(this.BtnBuyRound_Click);
+            this.btnBuyRound.Click += new System.EventHandler(this.btnBuyRound_Click);
             // 
             // txtRndPrice
             // 
@@ -207,15 +207,6 @@
             this.txtRndPrice.Name = "txtRndPrice";
             this.txtRndPrice.Size = new System.Drawing.Size(167, 22);
             this.txtRndPrice.TabIndex = 13;
-            // 
-            // lbRoundNames
-            // 
-            this.lbRoundNames.FormattingEnabled = true;
-            this.lbRoundNames.ItemHeight = 16;
-            this.lbRoundNames.Location = new System.Drawing.Point(127, 32);
-            this.lbRoundNames.Name = "lbRoundNames";
-            this.lbRoundNames.Size = new System.Drawing.Size(167, 212);
-            this.lbRoundNames.TabIndex = 11;
             // 
             // btnRemoveName
             // 
@@ -225,7 +216,7 @@
             this.btnRemoveName.TabIndex = 2;
             this.btnRemoveName.Text = "<<";
             this.btnRemoveName.UseVisualStyleBackColor = true;
-            this.btnRemoveName.Click += new System.EventHandler(this.BtnRemoveName_Click);
+            this.btnRemoveName.Click += new System.EventHandler(this.btnRemoveName_Click_1);
             // 
             // btnAddName
             // 
@@ -235,7 +226,16 @@
             this.btnAddName.TabIndex = 7;
             this.btnAddName.Text = ">>";
             this.btnAddName.UseVisualStyleBackColor = true;
-            this.btnAddName.Click += new System.EventHandler(this.BtnAddName_Click);
+            this.btnAddName.Click += new System.EventHandler(this.btnAddName_Click);
+            // 
+            // lbRoundNames
+            // 
+            this.lbRoundNames.FormattingEnabled = true;
+            this.lbRoundNames.ItemHeight = 16;
+            this.lbRoundNames.Location = new System.Drawing.Point(127, 33);
+            this.lbRoundNames.Name = "lbRoundNames";
+            this.lbRoundNames.Size = new System.Drawing.Size(167, 212);
+            this.lbRoundNames.TabIndex = 19;
             // 
             // Form1
             // 
@@ -276,6 +276,7 @@
         private System.Windows.Forms.TextBox txtRndPrice;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox lboxBalance;
+        private System.Windows.Forms.ListBox lbRoundNames;
     }
 }
 
