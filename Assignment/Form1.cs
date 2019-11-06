@@ -43,11 +43,11 @@ namespace Assign_Week_9
 
         private void btnRemoveSelected_Click(object sender, EventArgs e) //Removing selected member of the team from names and round listboxes
         {
-            int currentIndex = lboxNames.SelectedIndex;
-            string person = team[currentIndex]; 
-
             if (lboxNames.SelectedItem != null) 
             {
+                int currentIndex = lboxNames.SelectedIndex;
+                string person = team[currentIndex];
+
                 //Removing items from listboxes
                 lboxNames.Items.Remove(lboxNames.SelectedItem);
                 lboxBalance.Items.RemoveAt(currentIndex);
