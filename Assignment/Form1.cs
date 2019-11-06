@@ -48,10 +48,6 @@ namespace Assign_Week_9
 
             if (lboxNames.SelectedItem != null) 
             {
-                //Removing items from lists
-                team.RemoveAt(currentIndex);
-                balance.RemoveAt(currentIndex);
-
                 //Removing items from listboxes
                 lboxNames.Items.Remove(lboxNames.SelectedItem);
                 lboxBalance.Items.RemoveAt(currentIndex);
@@ -89,13 +85,10 @@ namespace Assign_Week_9
 
             if (member != "" && lboxNames.Items.Contains(member) == true)
             {
-                //Removing items from both lists
-                team.Remove(member);
-                balance.RemoveAt(0);
-
-                //Removing items from both listboxes
+                //Removing items from listboxes
                 lboxNames.Items.Remove(member);
                 lboxBalance.Items.RemoveAt(0);
+                lbRoundNames.Items.Remove(member);
             }
             else if (member == "")
             {
