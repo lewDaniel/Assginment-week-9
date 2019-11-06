@@ -156,6 +156,8 @@ namespace Assign_Week_9
                             }
                         }
                     }
+
+                    lbRoundNames.Items.Clear();
                 }
 
                 else
@@ -167,6 +169,20 @@ namespace Assign_Week_9
             else
             {
                 MessageBox.Show("There are no people to select.");
+            }
+        }
+
+        private void GameButton_Tick(object sender, EventArgs e)
+        {
+            if(lbRoundNames.Items.Count != 0)
+            {
+                btnRemoveSelected.Enabled = false;
+                btnRemoveMember.Enabled = false;
+            }
+            else
+            {
+                btnRemoveSelected.Enabled = true;
+                btnRemoveMember.Enabled = true;
             }
         }
     }

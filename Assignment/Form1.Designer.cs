@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lboxBalance = new System.Windows.Forms.ListBox();
             this.lboxNames = new System.Windows.Forms.ListBox();
@@ -39,13 +40,14 @@
             this.btnRemoveMember = new System.Windows.Forms.Button();
             this.btnRemoveSelected = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbRoundNames = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuyRound = new System.Windows.Forms.Button();
             this.txtRndPrice = new System.Windows.Forms.TextBox();
             this.btnRemoveName = new System.Windows.Forms.Button();
             this.btnAddName = new System.Windows.Forms.Button();
-            this.lbRoundNames = new System.Windows.Forms.ListBox();
+            this.gameButton = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -171,6 +173,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Round Information";
             // 
+            // lbRoundNames
+            // 
+            this.lbRoundNames.FormattingEnabled = true;
+            this.lbRoundNames.ItemHeight = 16;
+            this.lbRoundNames.Location = new System.Drawing.Point(127, 33);
+            this.lbRoundNames.Name = "lbRoundNames";
+            this.lbRoundNames.Size = new System.Drawing.Size(167, 212);
+            this.lbRoundNames.TabIndex = 19;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Assign_Week_9.Properties.Resources.alcohol;
@@ -228,14 +239,10 @@
             this.btnAddName.UseVisualStyleBackColor = true;
             this.btnAddName.Click += new System.EventHandler(this.btnAddName_Click);
             // 
-            // lbRoundNames
+            // gameButton
             // 
-            this.lbRoundNames.FormattingEnabled = true;
-            this.lbRoundNames.ItemHeight = 16;
-            this.lbRoundNames.Location = new System.Drawing.Point(127, 33);
-            this.lbRoundNames.Name = "lbRoundNames";
-            this.lbRoundNames.Size = new System.Drawing.Size(167, 212);
-            this.lbRoundNames.TabIndex = 19;
+            this.gameButton.Enabled = true;
+            this.gameButton.Tick += new System.EventHandler(this.GameButton_Tick);
             // 
             // Form1
             // 
@@ -277,6 +284,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox lboxBalance;
         private System.Windows.Forms.ListBox lbRoundNames;
+        private System.Windows.Forms.Timer gameButton;
     }
 }
 
