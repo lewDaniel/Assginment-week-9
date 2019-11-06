@@ -20,8 +20,6 @@ namespace Assign_Week_9
         void lboxRefill() //The method fills both listboxes with team members and their balance
         {
             int teamLength = team.Count();
-            lboxNames.Items.Clear();
-            lboxBalance.Items.Clear();
 
             for (int i = 0; i < teamLength; i++)
             {
@@ -38,6 +36,7 @@ namespace Assign_Week_9
         private void btnAddTeam_Click(object sender, EventArgs e)
         {
             lboxRefill();
+            btnAddTeam.Enabled = false;
         }
 
 
@@ -46,12 +45,10 @@ namespace Assign_Week_9
             if (lboxNames.SelectedItem != null) 
             {
                 int currentIndex = lboxNames.SelectedIndex;
-                string person = team[currentIndex];
 
                 //Removing items from listboxes
                 lboxNames.Items.Remove(lboxNames.SelectedItem);
-                lboxBalance.Items.RemoveAt(currentIndex);
-                lbRoundNames.Items.Remove(person.Trim()); //Using string person to access the round listbox
+                lboxBalance.Items.RemoveAt(currentIndex); 
             }
             else
             {
@@ -63,19 +60,15 @@ namespace Assign_Week_9
         {
             string member = tboxMember.Text;
 
-            if (member != "")
+            if (member != "" && lboxNames.Items.Contains(member) == false)
             {
-                //New items in both lists
-                team.Add(member);
-                balance.Add(0);
-
                 //New items in both listboxes
                 lboxNames.Items.Add(member);
                 lboxBalance.Items.Add(0);
             }
             else
             {
-                MessageBox.Show("You must enter the name");
+                MessageBox.Show("You must enter the name or add another player.");
             }
         }
 
@@ -181,6 +174,20 @@ namespace Assign_Week_9
             else
             {
                 MessageBox.Show("There are no people to select or there is only one player.");
+            }
+        }
+
+        private void GameStart_Tick(object sender, EventArgs e)
+        {
+            if(lbRoundNames.Items.Count > 0)
+            {
+                btnRemoveSelected.Enabled = false;
+                btnRemoveMember.Enabled = false;
+            }
+            else
+            {
+                btnRemoveSelected.Enabled = true;
+                btnRemoveMember.Enabled = true;
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lboxBalance = new System.Windows.Forms.ListBox();
             this.lboxNames = new System.Windows.Forms.ListBox();
@@ -46,6 +47,7 @@
             this.txtRndPrice = new System.Windows.Forms.TextBox();
             this.btnRemoveName = new System.Windows.Forms.Button();
             this.btnAddName = new System.Windows.Forms.Button();
+            this.gameStart = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -237,6 +239,11 @@
             this.btnAddName.UseVisualStyleBackColor = true;
             this.btnAddName.Click += new System.EventHandler(this.btnAddName_Click);
             // 
+            // gameStart
+            // 
+            this.gameStart.Enabled = true;
+            this.gameStart.Tick += new System.EventHandler(this.GameStart_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -277,6 +284,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox lboxBalance;
         private System.Windows.Forms.ListBox lbRoundNames;
+        private System.Windows.Forms.Timer gameStart;
     }
 }
 
