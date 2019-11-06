@@ -89,10 +89,13 @@ namespace Assign_Week_9
 
         private void btnAddName_Click(object sender, EventArgs e)
         {
+
+            //Checking if there is a name selected from the team
             if (lboxNames.SelectedItem != null)
             {
                 string name = lboxNames.SelectedItem.ToString();
 
+                //Checking if the name is already added
                 if (lbRoundNames.Items.Contains(name) == false)
                     lbRoundNames.Items.Add(name);
                 else
@@ -107,9 +110,11 @@ namespace Assign_Week_9
 
         private void btnRemoveName_Click_1(object sender, EventArgs e)
         {
+            //Checking if there is a name selected in the Round List
             if (lbRoundNames.SelectedItem != null)
                 lbRoundNames.Items.Remove(lbRoundNames.SelectedItem);
 
+            //Checking if the list is empty
             else if (lbRoundNames.Items.Count == 0)
                 MessageBox.Show("There are no more items.");
 
@@ -119,9 +124,10 @@ namespace Assign_Week_9
 
         private void btnBuyRound_Click(object sender, EventArgs e)
         {
+            //Checking if the list contains any items
             if (lbRoundNames.Items.Count != 0)
             {
-
+                //Checking if there is a sum for the drinks and if there is a Round Payer selected
                 if (txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
                 {
                     string roundBuyer = lbRoundNames.SelectedItem.ToString();
@@ -129,18 +135,23 @@ namespace Assign_Week_9
                     int moneyRoundBuyer = lboxNames.Items.IndexOf(roundBuyer);
                     double sumRoundBuyer = Convert.ToDouble(lboxBalance.Items[moneyRoundBuyer]);
 
+                    //Adding the sum to the Round Payer
                     lboxBalance.Items[moneyRoundBuyer] = sumRoundBuyer + roundPrice;
 
+                    //Establishing the amount of money each player should pay for the round
                     int roundPeople = lbRoundNames.Items.Count;
                     double priceAfter = roundPrice / roundPeople;
 
+                    //Going through the whole lboxName list, checking each item to match each item in lbRoundNames
                     for (int i = 0; i < lboxNames.Items.Count; i++)
                     {
                         for (int n = 0; n < lbRoundNames.Items.Count; n++)
                         {
+                            //If there is a match and it is not the Round Payer
                             if (lbRoundNames.Items[n] == lboxNames.Items[i] && lboxNames.Items[i] != roundBuyer)
                             {
-                                double amountOfMoney = Convert.ToDouble(lboxBalance.Items[i]) + priceAfter;
+                                //Establishing the new balance of the player/s
+                                double amountOfMoney = Convert.ToDouble(lboxBalance.Items[i]) - priceAfter;
                                 lboxBalance.Items[i] = amountOfMoney.ToString("00.00");
                             }
                         }
@@ -158,20 +169,6 @@ namespace Assign_Week_9
             else
             {
                 MessageBox.Show("There are no people to select.");
-            }
-        }
-
-        private void GameButton_Tick(object sender, EventArgs e)
-        {
-            if(lbRoundNames.Items.Count != 0)
-            {
-                btnRemoveSelected.Enabled = false;
-                btnRemoveMember.Enabled = false;
-            }
-            else
-            {
-                btnRemoveSelected.Enabled = true;
-                btnRemoveMember.Enabled = true;
             }
         }
     }
