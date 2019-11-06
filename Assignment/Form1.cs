@@ -137,7 +137,7 @@ namespace Assign_Week_9
         private void btnBuyRound_Click(object sender, EventArgs e)
         {
             //Checking if the list contains any items
-            if (lbRoundNames.Items.Count != 0)
+            if (lbRoundNames.Items.Count > 1)
             {
                 //Checking if there is a sum for the drinks and if there is a Round Payer selected
                 if (txtRndPrice.Text != "" && lbRoundNames.SelectedItem != null)
@@ -180,7 +180,7 @@ namespace Assign_Week_9
             }
             else
             {
-                MessageBox.Show("There are no people to select.");
+                MessageBox.Show("There are no people to select or there is only one player.");
             }
         }
     }
