@@ -273,7 +273,6 @@
         private System.Windows.Forms.Button btnRemoveMember;
         private System.Windows.Forms.Button btnRemoveSelected;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Button btnRemoveName;
         private System.Windows.Forms.Button btnAddName;
         private System.Windows.Forms.Button btnBuyRound;

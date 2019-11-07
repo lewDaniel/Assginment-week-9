@@ -42,17 +42,24 @@ namespace Assign_Week_9
 
         private void btnRemoveSelected_Click(object sender, EventArgs e) //Removing selected member of the team from names and round listboxes
         {
-            if (lboxNames.SelectedItem != null) 
+            if(checkBalance() == false)
             {
-                int currentIndex = lboxNames.SelectedIndex;
+                if (lboxNames.SelectedItem != null)
+                {
+                    int currentIndex = lboxNames.SelectedIndex;
 
-                //Removing items from listboxes
-                lboxNames.Items.Remove(lboxNames.SelectedItem);
-                lboxBalance.Items.RemoveAt(currentIndex); 
+                    //Removing items from listboxes
+                    lboxNames.Items.Remove(lboxNames.SelectedItem);
+                    lboxBalance.Items.RemoveAt(currentIndex);
+                }
+                else
+                {
+                    MessageBox.Show("You need to select somebody");
+                }
             }
             else
             {
-                MessageBox.Show("You need to select somebody");
+                MessageBox.Show("Balance is not negative");
             }
         }
 
@@ -75,21 +82,30 @@ namespace Assign_Week_9
         private void btnRemoveName_Click(object sender, EventArgs e) //Removing member by name
         {
             string member = tboxMember.Text;
-
-            if (member != "" && lboxNames.Items.Contains(member) == true)
+            int nameOfMember = lboxNames.Items.IndexOf(member);
+            
+            if(nameOfMember > -1)
             {
-                //Removing items from listboxes
-                lboxNames.Items.Remove(member);
-                lboxBalance.Items.RemoveAt(0);
-                lbRoundNames.Items.Remove(member);
+                int balanceOfMember = Convert.ToInt32(lboxBalance.Items[nameOfMember]);
+                if (member != "" && lboxNames.Items.Contains(member) == true && balanceOfMember < 0)
+                {
+                    //Removing items from listboxes
+                    lboxNames.Items.Remove(member);
+                    lboxBalance.Items.RemoveAt(0);
+                    lbRoundNames.Items.Remove(member);
+                }
+                else if(balanceOfMember >= 0)
+                {
+                    MessageBox.Show("Balance is not negative!");
+                }
             }
             else if (member == "")
             {
-                MessageBox.Show("You must enter the name");
+                MessageBox.Show("You must enter the name!");
             }
             else if (lboxNames.Items.Contains(member) == false)
             {
-                MessageBox.Show("You can't remove ghosts");
+                MessageBox.Show("You can't remove ghosts!");
             }
         }
 
@@ -189,6 +205,28 @@ namespace Assign_Week_9
                 btnRemoveSelected.Enabled = true;
                 btnRemoveMember.Enabled = true;
             }
+        }
+
+        bool checkBalance()
+        {
+            int name = lboxNames.SelectedIndex;
+            bool result;
+
+            if (name == -1)
+            {
+                MessageBox.Show("Select a player!");
+                result = true;
+            }
+            else if (Convert.ToDouble(lboxBalance.Items[name]) >= 0)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }
